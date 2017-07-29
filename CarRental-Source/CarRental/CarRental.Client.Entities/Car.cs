@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Core.Common.Core;
+
 namespace CarRental.Client.Entities
 {
-    public class Car
+    public class Car : ObjectBase
     {
         private int _carId;
         private string _description;
@@ -18,37 +20,79 @@ namespace CarRental.Client.Entities
         public int CarId
         {
             get { return this._carId; }
-            set { this._carId = value; }
+            set
+            {
+                if (this._carId != value)
+                {
+                    this._carId = value;
+                    base.OnPropertyChanged(() => this.CarId);
+                }
+            }
         }
 
         public string Description
         {
             get { return this._description; }
-            set { this._description = value; }
+            set
+            {
+                if (this._description != value)
+                {
+                    this._description = value;
+                    base.OnPropertyChanged(() => this.Description);
+                }
+            }
         }
 
         public string Color
         {
             get { return this._color; }
-            set { this._color = value; }
+            set
+            {
+                if (this._color != value)
+                {
+                    this._color = value;
+                    base.OnPropertyChanged(() => this.Color);
+                }
+            }
         }
 
         public int Year
         {
             get { return this._year; }
-            set { this._year = value; }
+            set
+            {
+                if (this._year != value)
+                {
+                    this._year = value;
+                    base.OnPropertyChanged(() => this.Year);
+                }
+            }
         }
 
         public decimal RentalPrice
         {
             get { return this._rentalPrice; }
-            set { this._rentalPrice = value; }
+            set
+            {
+                if (this._rentalPrice != value)
+                {
+                    this._rentalPrice = value;
+                    base.OnPropertyChanged(() => this.RentalPrice);
+                }
+            }
         }
 
         public bool CurrentlyRented
         {
             get { return this._currentlyRented; }
-            set { this._currentlyRented = value; }
+            set
+            {
+                if (this._currentlyRented != value)
+                {
+                    this._currentlyRented = value;
+                    base.OnPropertyChanged(() => this.CurrentlyRented);
+                }
+            }
         }
     }
 }
