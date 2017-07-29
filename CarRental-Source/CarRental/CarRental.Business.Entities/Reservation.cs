@@ -31,8 +31,8 @@ namespace CarRental.Business.Entities
 
         public int EntityId
         {
-            get { return ReservationId; }
-            set { ReservationId = value; }
+            get { return this.ReservationId; }
+            set { this.ReservationId = value; }
         }
 
         #endregion
@@ -41,7 +41,7 @@ namespace CarRental.Business.Entities
 
         int IAccountOwnedEntity.OwnerAccountId
         {
-            get { return AccountId; }
+            get { return this.AccountId; }
         }
 
         #endregion
