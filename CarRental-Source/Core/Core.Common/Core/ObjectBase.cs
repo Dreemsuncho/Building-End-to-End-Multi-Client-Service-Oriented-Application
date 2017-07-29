@@ -24,7 +24,7 @@ namespace Core.Common.Core
 
         public ObjectBase()
         {
-            this.validator = GetValidator();
+            this.validator = this.GetValidator();
             this.Validate();
         }
 

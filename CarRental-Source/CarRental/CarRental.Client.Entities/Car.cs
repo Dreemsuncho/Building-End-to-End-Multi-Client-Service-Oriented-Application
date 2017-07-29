@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Core.Common.Core;
+using FluentValidation;
 
 namespace CarRental.Client.Entities
 {
@@ -94,5 +95,26 @@ namespace CarRental.Client.Entities
                 }
             }
         }
+
+
+        #region Validation 
+
+        protected override IValidator GetValidator()
+        {
+            return new CarValidator();
+        }
+
+        private class CarValidator : AbstractValidator<Car>
+        {
+            public CarValidator()
+            {
+                base.RuleFor(car => car.Description).NotEmpty();
+                base.RuleFor(car => car.Color).NotEmpty();
+                base.RuleFor(car => car.RentalPrice).GreaterThan(0);
+                base.RuleFor(car => car.Year).GreaterThan(2000).LessThanOrEqualTo(DateTime.Now.Year + 1);
+            }
+        }
+
+        #endregion
     }
 }
