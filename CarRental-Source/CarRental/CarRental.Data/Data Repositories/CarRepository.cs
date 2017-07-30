@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
+using System.ComponentModel.Composition;
 
 namespace CarRental.Data
 {
+    [Export(typeof(ICarRepository))]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class CarRepository : DataRepositoryBase<Car>, ICarRepository
     {
         protected override Car AddEntity(CarRentalContext entityContext, Car entity)
