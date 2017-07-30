@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Contracts", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Bootstrapper", "CarRental\CarRental.Business.Bootstrapper\CarRental.Business.Bootstrapper.csproj", "{9CDB2749-8FDF-47FC-8C1E-A7CC8ABB1455}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Tests", "CarRental.Data.Tests\CarRental.Data.Tests.csproj", "{44EE2D93-8475-47FA-9449-893790E862F2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Tests", "CarRental\CarRental.Data.Tests\CarRental.Data.Tests.csproj", "{44EE2D93-8475-47FA-9449-893790E862F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
