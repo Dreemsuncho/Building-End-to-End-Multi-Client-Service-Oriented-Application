@@ -44,7 +44,7 @@ namespace CarRental.Business.Entities
 
         #region IIdentifiableEntity members
 
-        public int EntityId
+        int IIdentifiableEntity.EntityId
         {
             get { return this.AccountId; }
             set { this.AccountId = value; }
@@ -54,7 +54,7 @@ namespace CarRental.Business.Entities
 
         #region IAccountOwnedEntity
 
-        public int OwnerAccountId
+        int IAccountOwnedEntity.OwnerAccountId
         {
             get { return this.AccountId; }
         }

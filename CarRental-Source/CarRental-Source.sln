@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common.Contracts", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common.Tests", "Core\Core.Common.Tests\Core.Common.Tests.csproj", "{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access", "Data Access", "{64550146-5C45-4465-BE94-B9F029830A85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data", "CarRental\CarRental.Data\CarRental.Data.csproj", "{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,10 @@ Global
 		{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +65,6 @@ Global
 		{C098C8FA-5F34-4678-9F9A-F1520F735003} = {46F6CFBD-3E29-4651-9FC5-D8E791D4903B}
 		{B226FBE6-6D5F-40B9-9247-2557486206A7} = {46F6CFBD-3E29-4651-9FC5-D8E791D4903B}
 		{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3} = {22136733-C801-4F9D-BD1E-CE419081E314}
+		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1} = {64550146-5C45-4465-BE94-B9F029830A85}
 	EndGlobalSection
 EndGlobal

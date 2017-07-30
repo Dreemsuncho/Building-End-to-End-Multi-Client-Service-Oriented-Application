@@ -29,7 +29,7 @@ namespace CarRental.Business.Entities
 
         #region IIdentifiableEntity members
 
-        public int EntityId
+        int IIdentifiableEntity.EntityId
         {
             get { return this.ReservationId; }
             set { this.ReservationId = value; }
