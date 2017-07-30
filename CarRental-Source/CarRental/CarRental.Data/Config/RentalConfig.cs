@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.Data.Config
 {
-    class RentalConfig : EntityTypeConfiguration<Rental>
+    public class RentalConfig : EntityTypeConfiguration<Rental>
     {
         public RentalConfig()
         {

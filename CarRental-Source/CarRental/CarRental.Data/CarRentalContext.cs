@@ -12,7 +12,7 @@ namespace CarRental.Data
         public CarRentalContext()
             : base("CarRental")
         {
-            Database.SetInitializer<CarRentalContext>(null);
+            Database.SetInitializer<CarRentalContext>(new CreateDatabaseIfNotExists<CarRentalContext>());
         }
 
         public DbSet<Account> AccountSet { get; set; }
@@ -26,8 +26,9 @@ namespace CarRental.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Ignore<ExtensionDataObject>();
             modelBuilder.Ignore<IIdentifiableEntity>();
-            modelBuilder.Ignore<IExtensibleDataObject>();
 
             modelBuilder.Configurations.AddFromAssembly(typeof(CarRentalContext).Assembly);
         }

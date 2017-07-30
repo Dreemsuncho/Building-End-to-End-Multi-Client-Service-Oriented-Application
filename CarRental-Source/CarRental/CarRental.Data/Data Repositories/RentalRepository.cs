@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
 using System.ComponentModel.Composition;
+using CarRental.Data.Contracts.DTOs;
 
 namespace CarRental.Data
 {
@@ -73,6 +74,23 @@ namespace CarRental.Data
             {
                 return context.RentalSet
                     .Where(e => e.CarId == carId)
+                    .ToList();
+            }
+        }
+
+        public IEnumerable<CustomerRentalInfo> GetCurrentCustomerRentalInfo()
+        {
+            using (var context = new CarRentalContext())
+            {
+                return context.RentalSet
+                    .Where(r => r.DateRented == null)
+                    .Join(context.AccountSet, r => r.AccountId, a => a.AccountId, (r, a) => new { r, a })
+                    .Join(context.CarSet, ra => ra.r.CarId, c => c.CarId, (ra, c) => new CustomerRentalInfo
+                                                                                     {
+                                                                                         Customer = ra.a,
+                                                                                         Rental = ra.r,
+                                                                                         Car = c
+                                                                                     })
                     .ToList();
             }
         }

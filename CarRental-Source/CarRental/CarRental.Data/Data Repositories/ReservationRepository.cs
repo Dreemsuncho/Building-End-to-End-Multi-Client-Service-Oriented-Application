@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
 using System.ComponentModel.Composition;
+using CarRental.Data.Contracts.DTOs;
 
 namespace CarRental.Data
 {
@@ -45,6 +46,39 @@ namespace CarRental.Data
                 return context.ReservationSet
                     .Where(e => e.RentalDate < pickupDate)
                     .ToList();
+            }
+        }
+
+        public IEnumerable<CustomerReservationInfo> GetCurrentCustomerReservationInfo()
+        {
+            using (var context = new CarRentalContext())
+            {
+                return context.ReservationSet
+                    .Join(context.AccountSet, r => r.AccountId, a => a.AccountId, (r, a) => new { r, a })
+                    .Join(context.CarSet, ra => ra.r.CarId, c => c.CarId, (ra, c) => new CustomerReservationInfo
+                                                                                     {
+                                                                                         Customer = ra.a,
+                                                                                         Reservation = ra.r,
+                                                                                         Car = c
+                                                                                     })
+                    .ToList();
+            }
+        }
+
+        public IEnumerable<CustomerReservationInfo> GetCustomerOpenReservationInfo(int accountId)
+        {
+            using (var context = new CarRentalContext())
+            {
+                return context.ReservationSet
+                    .Join(context.AccountSet, r => r.AccountId, a => a.AccountId, (r, a) => new { r, a })
+                    .Join(context.CarSet, ra => ra.r.CarId, c => c.CarId, (ra,c)=> new CustomerReservationInfo
+                                                                                   {
+                                                                                       Customer = ra.a,
+                                                                                       Reservation = ra.r,
+                                                                                       Car = c
+                                                                                   })
+                   .Where(x=>x.Reservation.AccountId == accountId)
+                   .ToList();
             }
         }
 

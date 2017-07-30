@@ -1,9 +1,4 @@
-﻿using Core.Common.Contracts;
-using Core.Common.Extensions;
-using Core.Common.Utils;
-using FluentValidation;
-using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +7,13 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.Composition.Hosting;
+
+using FluentValidation;
+using FluentValidation.Results;
+
+using Core.Common.Contracts;
+using Core.Common.Extensions;
 
 namespace Core.Common.Core
 {
@@ -27,6 +28,8 @@ namespace Core.Common.Core
             this.validator = this.GetValidator();
             this.Validate();
         }
+
+        public static CompositionContainer Container { get; set; }
 
 
         #region IExtensibleDataObject Members
@@ -64,7 +67,7 @@ namespace Core.Common.Core
                     result = true;
 
                 return result;
-            }, 
+            },
             coll => { });
 
             return result;
@@ -207,7 +210,7 @@ namespace Core.Common.Core
         {
             get
             {
-                if (this.validationErrors != null && 
+                if (this.validationErrors != null &&
                     this.validationErrors.Count() > 0)
                     return false;
                 else
@@ -231,7 +234,7 @@ namespace Core.Common.Core
             {
                 StringBuilder errors = new StringBuilder();
 
-                if (this.validationErrors != null && 
+                if (this.validationErrors != null &&
                     this.validationErrors.Count() > 0)
                 {
                     foreach (ValidationFailure validationError in this.validationErrors)
