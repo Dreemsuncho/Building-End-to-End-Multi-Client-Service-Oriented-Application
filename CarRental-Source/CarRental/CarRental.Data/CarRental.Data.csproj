@@ -53,6 +53,11 @@
     <Compile Include="Config\CarConfig.cs" />
     <Compile Include="Config\RentalConfig.cs" />
     <Compile Include="Config\ReservationConfig.cs" />
+    <Compile Include="Data Repositories\AccountRepository.cs" />
+    <Compile Include="Data Repositories\CarRepository.cs" />
+    <Compile Include="Data Repositories\RentalRepository.cs" />
+    <Compile Include="Data Repositories\ReservationRepository.cs" />
+    <Compile Include="DataRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +68,17 @@
       <Project>{B226FBE6-6D5F-40B9-9247-2557486206A7}</Project>
       <Name>Core.Common.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj">
+      <Project>{C098C8FA-5F34-4678-9F9A-F1520F735003}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
       <Project>{20840998-DF3C-4F67-93E8-55939FCB6449}</Project>
       <Name>CarRental.Business.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj">
+      <Project>{13773543-4511-48BE-8373-75540100C92E}</Project>
+      <Name>CarRental.Data.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

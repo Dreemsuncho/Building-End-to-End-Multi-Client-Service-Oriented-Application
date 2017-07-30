@@ -13,6 +13,7 @@ namespace CarRental.Data.Config
         public CarConfig()
         {
             this.HasKey(x => x.CarId);
+            this.Ignore(x => x.CurrentlyRented);
         }
     }
 }

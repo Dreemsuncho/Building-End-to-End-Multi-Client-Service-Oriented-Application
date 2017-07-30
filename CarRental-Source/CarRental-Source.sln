@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access", "Data Access"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data", "CarRental\CarRental.Data\CarRental.Data.csproj", "{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Contracts", "CarRental\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj", "{13773543-4511-48BE-8373-75540100C92E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13773543-4511-48BE-8373-75540100C92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13773543-4511-48BE-8373-75540100C92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13773543-4511-48BE-8373-75540100C92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13773543-4511-48BE-8373-75540100C92E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +72,6 @@ Global
 		{B226FBE6-6D5F-40B9-9247-2557486206A7} = {46F6CFBD-3E29-4651-9FC5-D8E791D4903B}
 		{7BDC5D73-27B7-4A1F-A5C7-1D2C2A1805D3} = {22136733-C801-4F9D-BD1E-CE419081E314}
 		{580D645B-83E6-4CE4-BFC9-C57F73AB11B1} = {64550146-5C45-4465-BE94-B9F029830A85}
+		{13773543-4511-48BE-8373-75540100C92E} = {64550146-5C45-4465-BE94-B9F029830A85}
 	EndGlobalSection
 EndGlobal
