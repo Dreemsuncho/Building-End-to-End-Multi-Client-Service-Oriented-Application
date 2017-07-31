@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.Composition;
 
 using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
-using System.ComponentModel.Composition;
 
 namespace CarRental.Data
 {

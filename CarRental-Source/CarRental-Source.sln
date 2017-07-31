@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Bootstra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Data.Tests", "CarRental\CarRental.Data.Tests\CarRental.Data.Tests.csproj", "{44EE2D93-8475-47FA-9449-893790E862F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Contracts", "CarRental\CarRental.Business.Contracts\CarRental.Business.Contracts.csproj", "{499A95CD-086E-46E1-8184-6569A4D1E098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarRental.Business.Managers", "CarRental\CarRental.Business.Managers\CarRental.Business.Managers.csproj", "{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +77,14 @@ Global
 		{44EE2D93-8475-47FA-9449-893790E862F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44EE2D93-8475-47FA-9449-893790E862F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44EE2D93-8475-47FA-9449-893790E862F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{499A95CD-086E-46E1-8184-6569A4D1E098}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499A95CD-086E-46E1-8184-6569A4D1E098}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499A95CD-086E-46E1-8184-6569A4D1E098}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499A95CD-086E-46E1-8184-6569A4D1E098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,5 +99,7 @@ Global
 		{13773543-4511-48BE-8373-75540100C92E} = {64550146-5C45-4465-BE94-B9F029830A85}
 		{9CDB2749-8FDF-47FC-8C1E-A7CC8ABB1455} = {A9AD3733-D251-4E28-AFC3-F6D0A73CC47F}
 		{44EE2D93-8475-47FA-9449-893790E862F2} = {22136733-C801-4F9D-BD1E-CE419081E314}
+		{499A95CD-086E-46E1-8184-6569A4D1E098} = {A9AD3733-D251-4E28-AFC3-F6D0A73CC47F}
+		{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3} = {A9AD3733-D251-4E28-AFC3-F6D0A73CC47F}
 	EndGlobalSection
 EndGlobal

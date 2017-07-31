@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Runtime.Serialization;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 using Core.Common.Contracts;
 using CarRental.Business.Entities;
