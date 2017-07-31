@@ -33,6 +33,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,10 +44,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ManagerBase.cs" />
+    <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\InventoryManager.cs" />
+    <Compile Include="Managers\RentalManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CarRental.Common\CarRental.Common.csproj">
+      <Project>{035ce8f2-3ca6-4975-af42-0f708c523100}</Project>
+      <Name>CarRental.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Core\Core.Common.Contracts\Core.Common.Contracts.csproj">
       <Project>{B226FBE6-6D5F-40B9-9247-2557486206A7}</Project>
       <Name>Core.Common.Contracts</Name>

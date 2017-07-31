@@ -42,6 +42,7 @@ namespace CarRental.Business.Entities
         [DataMember]
         public string ExpDate { get; set; }
 
+
         #region IIdentifiableEntity members
 
         int IIdentifiableEntity.EntityId
@@ -51,6 +52,7 @@ namespace CarRental.Business.Entities
         }
 
         #endregion
+
 
         #region IAccountOwnedEntity
 

@@ -30,6 +30,7 @@ namespace CarRental.Business.Entities
         [DataMember]
         public DateTime? DateReturned { get; set; }
 
+
         #region IIdentifiableEntity members
 
         int IIdentifiableEntity.EntityId
@@ -39,6 +40,7 @@ namespace CarRental.Business.Entities
         }
 
         #endregion
+
 
         #region IAccountOwnedEntity members
 

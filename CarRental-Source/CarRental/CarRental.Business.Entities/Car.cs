@@ -31,6 +31,7 @@ namespace CarRental.Business.Entities
         [DataMember]
         public bool CurrentlyRented { get; set; }
 
+
         #region IIdentifiableEntity members
 
         int IIdentifiableEntity.EntityId

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{499A95CD-086E-46E1-8184-6569A4D1E098}</ProjectGuid>
+    <ProjectGuid>{035CE8F2-3CA6-4975-AF42-0F708C523100}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRental.Business.Contracts</RootNamespace>
-    <AssemblyName>CarRental.Business.Contracts</AssemblyName>
+    <RootNamespace>CarRental.Common</RootNamespace>
+    <AssemblyName>CarRental.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,8 +32,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,27 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data Contracts\CustomerRentalData.cs" />
-    <Compile Include="Data Contracts\CustomerReservationData.cs" />
+    <Compile Include="Security.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service Contracts\IAccountService.cs" />
-    <Compile Include="Service Contracts\IInventoryService.cs" />
-    <Compile Include="Service Contracts\IRentalService.cs" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <ProjectReference Include="..\..\Core\Core.Common.ServiceModel\Core.Common.ServiceModel.csproj">
-      <Project>{acb11997-0d09-49f4-9b24-bba4fc90bce9}</Project>
-      <Name>Core.Common.ServiceModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj">
-      <Project>{C098C8FA-5F34-4678-9F9A-F1520F735003}</Project>
-      <Name>Core.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
-      <Project>{20840998-DF3C-4F67-93E8-55939FCB6449}</Project>
-      <Name>CarRental.Business.Entities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
