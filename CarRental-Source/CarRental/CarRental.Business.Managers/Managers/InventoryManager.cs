@@ -10,6 +10,7 @@ using Core.Common.Core;
 using Core.Common.Contracts;
 using Core.Common.Exceptions;
 using CarRental.Business.Entities;
+using CarRental.Business.Common;
 using CarRental.Business.Contracts;
 using CarRental.Data.Contracts;
 
@@ -21,14 +22,26 @@ namespace CarRental.Business.Managers.Managers
     public class InventoryManager : ManagerBase, IInventoryService
     {
         [Import]
-        private readonly IDataRepositoryFactory _repositoryFactory;
+        private readonly IDataRepositoryFactory _dataRepositoryFactory;
+        [Import]
+        private readonly IBusinessEngineFactory _businessEngineFactory;
+
 
         public InventoryManager() { }
-        public InventoryManager(IDataRepositoryFactory repositoryFactory)
+        public InventoryManager(IDataRepositoryFactory dataRepositoryFactory)
         {
-            this._repositoryFactory = repositoryFactory;
+            this._dataRepositoryFactory = dataRepositoryFactory;
         }
-
+        public InventoryManager(IBusinessEngineFactory businessEngineFactory)
+        {
+            this._businessEngineFactory = businessEngineFactory;
+        }
+        public InventoryManager(IDataRepositoryFactory dataRepositoryFactory,
+                                IBusinessEngineFactory businessEngineFactory)
+        {
+            this._dataRepositoryFactory = dataRepositoryFactory;
+            this._businessEngineFactory = businessEngineFactory;
+        }
 
         #region IInventoryService members
 
@@ -36,7 +49,7 @@ namespace CarRental.Business.Managers.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var dataRepository = this._repositoryFactory.GetDataRepository<ICarRepository>();
+                var dataRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
 
                 var car = dataRepository.Get(carId);
 
@@ -54,8 +67,8 @@ namespace CarRental.Business.Managers.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var dataRepository = this._repositoryFactory.GetDataRepository<ICarRepository>();
-                var rentalRepository = this._repositoryFactory.GetDataRepository<IRentalRepository>();
+                var dataRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
+                var rentalRepository = this._dataRepositoryFactory.GetDataRepository<IRentalRepository>();
 
                 var cars = dataRepository.Get();
                 var rentedCars = rentalRepository.GetCurrentlyRentedCars();
@@ -75,7 +88,7 @@ namespace CarRental.Business.Managers.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var carRepository = this._repositoryFactory.GetDataRepository<ICarRepository>();
+                var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
 
                 Car updatedCar;
 
@@ -93,7 +106,7 @@ namespace CarRental.Business.Managers.Managers
         {
             base.ExecuteFaultHandledOperation(() =>
             {
-                var carRepository = this._repositoryFactory.GetDataRepository<ICarRepository>();
+                var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
                 carRepository.Remove(carId);
             });
         }
@@ -102,9 +115,11 @@ namespace CarRental.Business.Managers.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var carRepository = this._repositoryFactory.GetDataRepository<ICarRepository>();
-                var rentalRepository = this._repositoryFactory.GetDataRepository<IRentalRepository>();
-                var reservationRepository = this._repositoryFactory.GetDataRepository<IReservationRepository>();
+                var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
+                var rentalRepository = this._dataRepositoryFactory.GetDataRepository<IRentalRepository>();
+                var reservationRepository = this._dataRepositoryFactory.GetDataRepository<IReservationRepository>();
+
+                var carRentalEngine = this._businessEngineFactory.GetBusinessEngine<ICarRentalEngine>();
 
                 var allCars = carRepository.Get();
                 var rentedCars = rentalRepository.GetCurrentlyRentedCars();
@@ -114,7 +129,13 @@ namespace CarRental.Business.Managers.Managers
 
                 foreach (var car in allCars)
                 {
+                    var isAvailable = carRentalEngine.IsCarAvailableForRental(
+                        car.CarId, pickupDate, returnDate, rentedCars, reservedCars);
 
+                    if (isAvailable)
+                    {
+                        availableCars.Add(car);
+                    }
                 }
 
                 return availableCars.ToArray();
