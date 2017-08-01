@@ -69,7 +69,7 @@ namespace CarRental.Business.Managers
         }
 
 
-        #region IRentalService members
+        #region IRentalService operations
 
         [OperationBehavior(TransactionScopeRequired = true)]
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime dateDueBack)
@@ -142,7 +142,7 @@ namespace CarRental.Business.Managers
 
                 rental.DateReturned = DateTime.Now;
 
-                var updatedRentalEntity = rentalRepository.Update(rental);
+                rentalRepository.Update(rental);
             });
         }
 
@@ -210,8 +210,7 @@ namespace CarRental.Business.Managers
                     ReturnDate = returnDate
                 };
 
-                var savedEntity = reservationRepository.Add(reservation);
-                return savedEntity;
+                return reservationRepository.Add(reservation);
             });
         }
 
@@ -286,10 +285,10 @@ namespace CarRental.Business.Managers
 
                 var reservationData = new List<CustomerReservationData>();
 
-                var reservationInfoSet = reservationRepository.GetCurrentCustomerReservationInfo();
+                IEnumerable<CustomerReservationInfo> reservationInfoSet = reservationRepository.GetCurrentCustomerReservationInfo();
                 foreach (var reservationInfo in reservationInfoSet)
                 {
-                    reservationData.Add(new CustomerReservationData()
+                    reservationData.Add(new CustomerReservationData
                     {
                         ReservationId = reservationInfo.Reservation.ReservationId,
                         Car = reservationInfo.Car.Color + " " + reservationInfo.Car.Year + " " + reservationInfo.Car.Description,
@@ -319,10 +318,10 @@ namespace CarRental.Business.Managers
 
                 var reservationData = new List<CustomerReservationData>();
 
-                var reservationInfoSet = reservationRepository.GetCustomerOpenReservationInfo(account.AccountId);
+                IEnumerable<CustomerReservationInfo> reservationInfoSet = reservationRepository.GetCustomerOpenReservationInfo(account.AccountId);
                 foreach (var reservationInfo in reservationInfoSet)
                 {
-                    reservationData.Add(new CustomerReservationData()
+                    reservationData.Add(new CustomerReservationData
                     {
                         ReservationId = reservationInfo.Reservation.ReservationId,
                         Car = reservationInfo.Car.Color + " " + reservationInfo.Car.Year + " " + reservationInfo.Car.Description,
@@ -340,7 +339,6 @@ namespace CarRental.Business.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var accountRepository = this._dataRepositoryFactory.GetDataRepository<IAccountRepository>();
                 var rentalRepository = this._dataRepositoryFactory.GetDataRepository<IRentalRepository>();
 
                 var rental = rentalRepository.Get(rentalId);
@@ -362,10 +360,10 @@ namespace CarRental.Business.Managers
 
                 var rentalData = new List<CustomerRentalData>();
 
-                var rentalInfoSet = rentalRepository.GetCurrentCustomerRentalInfo();
+                IEnumerable<CustomerRentalInfo> rentalInfoSet = rentalRepository.GetCurrentCustomerRentalInfo();
                 foreach (var rentalInfo in rentalInfoSet)
                 {
-                    rentalData.Add(new CustomerRentalData()
+                    rentalData.Add(new CustomerRentalData
                     {
                         RentalId = rentalInfo.Rental.RentalId,
                         Car = rentalInfo.Car.Color + " " + rentalInfo.Car.Year + " " + rentalInfo.Car.Description,

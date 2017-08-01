@@ -1,6 +1,6 @@
 using System;
-using Core.Common.Core;
 using FluentValidation;
+using Core.Common.Core;
 
 namespace Core.Common.Tests
 {

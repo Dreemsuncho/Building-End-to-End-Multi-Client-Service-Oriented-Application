@@ -29,7 +29,7 @@ namespace CarRental.Business.Managers
         }
 
 
-        #region IAccountService members
+        #region IAccountService operations
 
         [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]

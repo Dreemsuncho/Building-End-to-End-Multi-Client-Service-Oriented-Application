@@ -44,7 +44,7 @@ namespace CarRental.Business.Managers
             this._businessEngineFactory = businessEngineFactory;
         }
 
-        #region IInventoryService members
+        #region IInventoryService operations
 
         [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
@@ -52,9 +52,9 @@ namespace CarRental.Business.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var dataRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
+                var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
 
-                var car = dataRepository.Get(carId);
+                var car = carRepository.Get(carId);
 
                 if (car == null)
                 {
@@ -72,10 +72,10 @@ namespace CarRental.Business.Managers
         {
             return base.ExecuteFaultHandledOperation(() =>
             {
-                var dataRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
+                var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
                 var rentalRepository = this._dataRepositoryFactory.GetDataRepository<IRentalRepository>();
 
-                var cars = dataRepository.Get();
+                var cars = carRepository.Get();
                 var rentedCars = rentalRepository.GetCurrentlyRentedCars();
 
                 foreach (var car in cars)
@@ -96,14 +96,10 @@ namespace CarRental.Business.Managers
             {
                 var carRepository = this._dataRepositoryFactory.GetDataRepository<ICarRepository>();
 
-                Car updatedCar;
-
                 if (car.CarId == 0)
-                    updatedCar = carRepository.Add(car);
+                    return carRepository.Add(car);
                 else
-                    updatedCar = carRepository.Update(car);
-
-                return updatedCar;
+                    return carRepository.Update(car);
             });
         }
 

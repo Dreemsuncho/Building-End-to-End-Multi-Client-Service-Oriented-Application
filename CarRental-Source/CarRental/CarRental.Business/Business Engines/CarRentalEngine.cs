@@ -74,7 +74,7 @@ namespace CarRental.Business
             var accountRepository = this._dataRepositoryFactory.GetDataRepository<IAccountRepository>();
             var rentalRepository = this._dataRepositoryFactory.GetDataRepository<IRentalRepository>();
 
-            bool carIsRented = IsCarCurrentlyRented(carId);
+            bool carIsRented = this.IsCarCurrentlyRented(carId);
             if (carIsRented)
                 throw new CarCurrentlyRentedException($"Car {carId} is already rented.");
 
