@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Core.Common.Core;
 using FluentValidation;
+
+using Core.Common.Core;
 
 namespace CarRental.Client.Entities
 {

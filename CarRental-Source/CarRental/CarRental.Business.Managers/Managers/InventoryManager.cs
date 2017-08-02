@@ -24,9 +24,9 @@ namespace CarRental.Business.Managers
     public class InventoryManager : ManagerBase, IInventoryService
     {
         [Import]
-        private readonly IDataRepositoryFactory _dataRepositoryFactory;
+        private  IDataRepositoryFactory _dataRepositoryFactory;
         [Import]
-        private readonly IBusinessEngineFactory _businessEngineFactory;
+        private  IBusinessEngineFactory _businessEngineFactory;
 
 
         public InventoryManager() { }

@@ -1,5 +1,4 @@
-﻿using Core.Common.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,11 +6,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
+using Core.Common.Utils;
+
 namespace Core.Common.Core
 {
     public abstract class NotificationObject : INotifyPropertyChanged
     {
-        private event PropertyChangedEventHandler _propertyChangedEvent;
+        private event PropertyChangedEventHandler _propertyChanged;
 
         protected readonly List<PropertyChangedEventHandler> propertyChangedSubscribers = new List<PropertyChangedEventHandler>();
 
@@ -21,21 +22,21 @@ namespace Core.Common.Core
             {
                 if (!this.propertyChangedSubscribers.Contains(value))
                 {
-                    this._propertyChangedEvent += value;
+                    this._propertyChanged += value;
                     this.propertyChangedSubscribers.Add(value);
                 }
             }
             remove
             {
-                this._propertyChangedEvent -= value;
+                this._propertyChanged -= value;
                 this.propertyChangedSubscribers.Remove(value);
             }
         }
 
         private void _OnPropertyChanged(string propertyName)
         {
-            if (this._propertyChangedEvent != null)
-                this._propertyChangedEvent(this, new PropertyChangedEventArgs(propertyName));
+            if (this._propertyChanged != null)
+                this._propertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)

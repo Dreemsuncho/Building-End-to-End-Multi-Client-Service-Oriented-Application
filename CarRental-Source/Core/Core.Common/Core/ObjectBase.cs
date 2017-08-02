@@ -48,7 +48,7 @@ namespace Core.Common.Core
             protected set
             {
                 this.isDirty = value;
-                OnPropertyChanged(() => this.IsDirty, false);
+                this.OnPropertyChanged(() => this.IsDirty, false);
             }
         }
 
@@ -175,9 +175,9 @@ namespace Core.Common.Core
             base.OnPropertyChanged(propertyExpression);
 
             if (makeDirty)
-                IsDirty = true;
+                this.IsDirty = true;
 
-            Validate();
+            this.Validate();
         }
 
         #endregion
@@ -210,8 +210,7 @@ namespace Core.Common.Core
         {
             get
             {
-                if (this.validationErrors != null &&
-                    this.validationErrors.Count() > 0)
+                if (this.validationErrors != null && this.validationErrors.Count() > 0)
                     return false;
                 else
                     return true;
@@ -234,13 +233,14 @@ namespace Core.Common.Core
             {
                 StringBuilder errors = new StringBuilder();
 
-                if (this.validationErrors != null &&
-                    this.validationErrors.Count() > 0)
+                if (this.IsValid)
                 {
                     foreach (ValidationFailure validationError in this.validationErrors)
                     {
                         if (validationError.PropertyName == columnName)
+                        {
                             errors.AppendLine(validationError.ErrorMessage);
+                        }
                     }
                 }
 
