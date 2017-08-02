@@ -45,9 +45,9 @@
     <Compile Include="Data Contracts\CustomerRentalData.cs" />
     <Compile Include="Data Contracts\CustomerReservationData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceContracts\IAccountService.cs" />
-    <Compile Include="ServiceContracts\IInventoryService.cs" />
-    <Compile Include="ServiceContracts\IRentalService.cs" />
+    <Compile Include="Service Contracts\IAccountService.cs" />
+    <Compile Include="Service Contracts\IInventoryService.cs" />
+    <Compile Include="Service Contracts\IRentalService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

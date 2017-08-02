@@ -15,7 +15,7 @@ using CarRental.Business.Entities;
 
 namespace CarRental.Business.Managers
 {
-    public class ManagerBase
+    public abstract class ManagerBase
     {
         protected string loginName;
         protected Account authorizationAccount;
