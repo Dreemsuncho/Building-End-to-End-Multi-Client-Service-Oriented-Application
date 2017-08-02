@@ -14,7 +14,7 @@ namespace CarRental.Client.Proxies
 {
     [Export(typeof(IInventoryService))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    class InventoryClient : UserClientBase<IInventoryService>, IInventoryService
+    public class InventoryClient : UserClientBase<IInventoryService>, IInventoryService
     {
         public void DeleteCar(int carId)
         {

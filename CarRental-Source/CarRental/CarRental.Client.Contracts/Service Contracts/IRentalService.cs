@@ -95,7 +95,7 @@ namespace CarRental.Client.Contracts
 
         #region Async
 
-        [OperationContract]
+        [OperationContract(Name = "RentCarToCustomerImmediately")]
         Task<Rental> RentCarToCustomerAsync(string loginEmail, int carId, DateTime dateDueBack);
 
         [OperationContract]

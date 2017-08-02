@@ -14,7 +14,7 @@ namespace CarRental.Client.Proxies
 {
     [Export(typeof(IRentalService))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    class RentalClient : UserClientBase<IRentalService>, IRentalService
+    public class RentalClient : UserClientBase<IRentalService>, IRentalService
     {
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime dateDueBack)
         {

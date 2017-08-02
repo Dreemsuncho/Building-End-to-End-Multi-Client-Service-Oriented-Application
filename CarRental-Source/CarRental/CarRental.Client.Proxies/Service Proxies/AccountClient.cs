@@ -14,7 +14,7 @@ namespace CarRental.Client.Proxies
 {
     [Export(typeof(IAccountService))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
-    class AccountClient : UserClientBase<IAccountService>, IAccountService
+    public class AccountClient : UserClientBase<IAccountService>, IAccountService
     {
         public Account GetCustomerAccountInfo(string loginEmail)
         {
