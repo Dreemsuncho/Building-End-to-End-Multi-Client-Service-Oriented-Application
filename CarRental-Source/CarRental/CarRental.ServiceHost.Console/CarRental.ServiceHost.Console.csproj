@@ -33,8 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,13 +52,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\Core.Common\Core.Common.csproj">
+      <Project>{C098C8FA-5F34-4678-9F9A-F1520F735003}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Business.Bootstrapper\CarRental.Business.Bootstrapper.csproj">
+      <Project>{9CDB2749-8FDF-47FC-8C1E-A7CC8ABB1455}</Project>
+      <Name>CarRental.Business.Bootstrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.Business.Contracts\CarRental.Business.Contracts.csproj">
       <Project>{499a95cd-086e-46e1-8184-6569a4d1e098}</Project>
       <Name>CarRental.Business.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarRental.Business.Entities\CarRental.Business.Entities.csproj">
+      <Project>{20840998-DF3C-4F67-93E8-55939FCB6449}</Project>
+      <Name>CarRental.Business.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.Business.Managers\CarRental.Business.Managers.csproj">
       <Project>{9F1AC0B6-1D88-4A89-9EF3-0863A9761DF3}</Project>
       <Name>CarRental.Business.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Common\CarRental.Common.csproj">
+      <Project>{035CE8F2-3CA6-4975-AF42-0F708C523100}</Project>
+      <Name>CarRental.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

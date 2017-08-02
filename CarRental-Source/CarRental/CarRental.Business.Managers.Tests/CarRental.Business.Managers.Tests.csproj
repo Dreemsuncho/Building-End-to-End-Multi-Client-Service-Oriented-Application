@@ -71,6 +71,10 @@
       <Project>{9f1ac0b6-1d88-4a89-9ef3-0863a9761df3}</Project>
       <Name>CarRental.Business.Managers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CarRental.Common\CarRental.Common.csproj">
+      <Project>{035CE8F2-3CA6-4975-AF42-0F708C523100}</Project>
+      <Name>CarRental.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarRental.Data.Contracts\CarRental.Data.Contracts.csproj">
       <Project>{13773543-4511-48BE-8373-75540100C92E}</Project>
       <Name>CarRental.Data.Contracts</Name>

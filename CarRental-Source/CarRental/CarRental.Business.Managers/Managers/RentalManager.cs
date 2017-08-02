@@ -25,9 +25,9 @@ namespace CarRental.Business.Managers
     public class RentalManager : ManagerBase, IRentalService
     {
         [Import]
-        private readonly IDataRepositoryFactory _dataRepositoryFactory;
+        private IDataRepositoryFactory _dataRepositoryFactory;
         [Import]
-        private readonly IBusinessEngineFactory _businessEngineFactory;
+        private IBusinessEngineFactory _businessEngineFactory;
 
 
         #region Constructors
@@ -72,6 +72,7 @@ namespace CarRental.Business.Managers
         #region IRentalService operations
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime dateDueBack)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -99,6 +100,7 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public Rental RentCarToCustomer(string loginEmail, int carId, DateTime rentalDate, DateTime dateDueBack)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -126,6 +128,7 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public void AcceptCarReturn(int carId)
         {
             base.ExecuteFaultHandledOperation(() =>
@@ -169,6 +172,8 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Reservation GetReservation(int reservationId)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -188,6 +193,8 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Reservation MakeReservation(string loginEmail, int carId, DateTime rentalDate, DateTime returnDate)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -215,6 +222,7 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public void ExecuteRentalFromReservation(int reservationId)
         {
             base.ExecuteFaultHandledOperation(() =>
@@ -260,6 +268,8 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public void CancelReservation(int reservationId)
         {
             base.ExecuteFaultHandledOperation(() =>
@@ -277,6 +287,7 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public CustomerReservationData[] GetCurrentReservations()
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -302,6 +313,8 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public CustomerReservationData[] GetCustomerReservations(string loginEmail)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -335,6 +348,8 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Rental GetRental(int rentalId)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -352,6 +367,7 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public CustomerRentalData[] GetCurrentRentals()
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -377,6 +393,7 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public Reservation[] GetDeadReservations()
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -389,6 +406,7 @@ namespace CarRental.Business.Managers
             });
         }
 
+        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
         public bool IsCarCurrentlyRented(int carId)
         {
             return base.ExecuteFaultHandledOperation(() =>

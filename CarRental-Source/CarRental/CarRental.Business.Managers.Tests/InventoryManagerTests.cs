@@ -12,6 +12,7 @@ using CarRental.Business.Entities;
 using CarRental.Data.Contracts;
 using CarRental.Business.Common;
 using System;
+using CarRental.Common;
 
 namespace CarRental.Business.Managers.Tests
 {
@@ -21,10 +22,7 @@ namespace CarRental.Business.Managers.Tests
         [SetUp]
         public void Initialize()
         {
-            var principal = new GenericPrincipal(
-                new GenericIdentity("Elvis"), new[] { "CarRentalAdmin" });
-
-            Thread.CurrentPrincipal = principal;
+            Security.AddGenericPrincipal();
         }
 
         [Test]
