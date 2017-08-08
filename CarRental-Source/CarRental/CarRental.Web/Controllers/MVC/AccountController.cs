@@ -49,5 +49,13 @@ namespace CarRental.Web.Controllers
             WebSecurity.Logout();
             return base.RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        [GET("account/changepassword")]
+        [Authorize]
+        public ActionResult ChangePassword()
+        {
+            return base.View();
+        }
     }
 }

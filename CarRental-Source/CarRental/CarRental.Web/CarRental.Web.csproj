@@ -226,13 +226,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountChangePasswordModel.cs" />
     <Compile Include="Models\AccountLoginModel.cs" />
     <Compile Include="Models\AccountRegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bindings\Models\AccountChangePasswordModel.js" />
     <Content Include="Bindings\Models\AccountLoginModel.js" />
     <Content Include="Bindings\Models\AccountRegisterModel.js" />
+    <Content Include="Bindings\ViewModels\AccountChangePasswordViewModel.js" />
     <Content Include="Bindings\ViewModels\AccountLoginViewModel.js" />
     <Content Include="Bindings\ViewModels\AccountRegisterViewModel.js" />
     <Content Include="Content\bootstrap-responsive.css" />
@@ -549,6 +552,7 @@
     <Content Include="Views\Shared\_ValidationErrors.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

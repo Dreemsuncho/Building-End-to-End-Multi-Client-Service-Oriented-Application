@@ -100,7 +100,6 @@
 			self.viewModelHelper.apiPost('api/account/register', unmappedModel,
 				function () {
 					self.viewMode('welcome');
-					window.location.href = CarRental.rootPath;
 				});
 		};
 	};

@@ -15,4 +15,4 @@
 		self.RememberMe = ko.observable(false);
 	};
 	cr.AccountLoginModel = AccountLoginModel;
-}(window.CarRental))
+}(window.CarRental)) 

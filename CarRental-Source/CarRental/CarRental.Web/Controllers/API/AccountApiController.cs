@@ -121,7 +121,7 @@ namespace CarRental.Web.Controllers
 
         [HttpPost]
         [HttpRoute("api/account/register")]
-        public HttpResponseMessage RegisterConfirm(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
+        public HttpResponseMessage CreateAccount(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
         {
             return base.GetHttpResponse(request, () =>
             {
@@ -148,6 +148,27 @@ namespace CarRental.Web.Controllers
 
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [HttpRoute("api/account/changepw")]
+        public HttpResponseMessage ChangePassword(HttpRequestMessage request, [FromBody]AccountChangePasswordModel model)
+        {
+            return base.GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                base.ValidateAuthorizedUser(model.LoginEmail);
+
+                bool success = this._securityAdapter.ChangePassword(model.LoginEmail, model.OldPassword, model.NewPassword);
+
+                if (success)
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                else
+                    response = request.CreateResponse(HttpStatusCode.InternalServerError, "Unable to change password");
 
                 return response;
             });
