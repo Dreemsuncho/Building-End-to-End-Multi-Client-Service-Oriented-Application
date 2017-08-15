@@ -17,7 +17,7 @@
 				self.viewModelHelper.apiPost('api/account/login', unmappedModel,
 					function () {
 						if (returnUrl !== '' && returnUrl.length > 1)
-							window.location.href = CarRental.rootPath + returnUrl;
+							window.location.href = CarRental.rootPath + returnUrl.substring(1);
 						else
 							window.location.href = CarRental.rootPath;
 					});

@@ -36,7 +36,7 @@ namespace CarRental.Business.Contracts
         [OperationContract]
         [FaultContract(typeof(NotFoundException))]
         [FaultContract(typeof(AuthorizationValidationException))]
-        IEnumerable<Rental> GetRentalHistory(string loginEmail);
+        Rental[] GetRentalHistory(string loginEmail);
 
         [OperationContract]
         [FaultContract(typeof(NotFoundException))]

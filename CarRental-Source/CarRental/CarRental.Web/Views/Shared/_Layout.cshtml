@@ -24,15 +24,14 @@
     @RenderSection("head_scripts", required: false)
 </head>
 <body>
-
     @Html.Partial("~/Views/Shared/_TopBar.cshtml")
-    <div class="wrapper">
+    <div class="wrapper" style="background-color:transparent;">
         <div class="container" style="padding-top: 15px;">
             <div class="content-wrapper main-content clear-fix">
                 <div style="margin-top: 35px;">
                     <a href="@Url.Action("Index", "Home")">
                         <img src="@Url.Content("~/Images/Pluralsight.png")"
-                             style="margin-top: 30px; width: 320px; height: 80px;" />
+                             style="margin: 0; width: 320px; height: 80px;" />
                     </a>
                 </div>
                 <section id="mainbody">
@@ -40,8 +39,8 @@
                 </section>
             </div>
         </div>
-        <div class="push"></div>
     </div>
+
     @Html.Partial("~/Views/Shared/_BottomBar.cshtml")
 
     @RenderSection("scripts", required: false)

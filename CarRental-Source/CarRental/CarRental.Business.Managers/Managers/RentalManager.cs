@@ -149,9 +149,9 @@ namespace CarRental.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
-        public IEnumerable<Rental> GetRentalHistory(string loginEmail)
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        public Rental[] GetRentalHistory(string loginEmail)
         {
             return base.ExecuteFaultHandledOperation(() =>
             {

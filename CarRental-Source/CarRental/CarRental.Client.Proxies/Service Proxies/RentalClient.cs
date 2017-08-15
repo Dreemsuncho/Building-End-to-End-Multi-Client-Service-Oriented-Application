@@ -31,9 +31,9 @@ namespace CarRental.Client.Proxies
             base.Channel.AcceptCarReturn(carId);
         }
 
-        public IEnumerable<Rental> GetRentalHistory(string loginEmail)
+        public Rental[] GetRentalHistory(string loginEmail)
         {
-            return base.Channel.GetRentalHistory(loginEmail);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.GetRentalHistory(loginEmail));
         }
 
         public Reservation GetReservation(int reservationId)
@@ -104,7 +104,7 @@ namespace CarRental.Client.Proxies
             return base.Channel.AcceptCarReturnAsync(carId);
         }
 
-        public Task<IEnumerable<Rental>> GetRentalHistoryAsync(string loginEmail)
+        public Task<Rental[]> GetRentalHistoryAsync(string loginEmail)
         {
             return base.Channel.GetRentalHistoryAsync(loginEmail);
         }

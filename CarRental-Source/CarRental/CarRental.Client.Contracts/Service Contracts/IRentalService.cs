@@ -37,7 +37,7 @@ namespace CarRental.Client.Contracts
         [OperationContract]
         [FaultContract(typeof(NotFoundException))]
         [FaultContract(typeof(AuthorizationValidationException))]
-        IEnumerable<Rental> GetRentalHistory(string loginEmail);
+        Rental[] GetRentalHistory(string loginEmail);
 
         [OperationContract]
         [FaultContract(typeof(NotFoundException))]
@@ -105,7 +105,7 @@ namespace CarRental.Client.Contracts
         Task AcceptCarReturnAsync(int carId);
 
         [OperationContract]
-        Task<IEnumerable<Rental>> GetRentalHistoryAsync(string loginEmail);
+        Task<Rental[]> GetRentalHistoryAsync(string loginEmail);
 
         [OperationContract]
         Task<Reservation> GetReservationAsync(int reservationId);

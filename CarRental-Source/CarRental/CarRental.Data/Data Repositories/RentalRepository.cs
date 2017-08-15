@@ -58,13 +58,13 @@ namespace CarRental.Data
             }
         }
 
-        public IEnumerable<Rental> GetRentalHistoryByAccount(int accountId)
+        public Rental[] GetRentalHistoryByAccount(int accountId)
         {
             using (var context = new CarRentalContext())
             {
                 return context.RentalSet
                     .Where(e => e.AccountId == accountId)
-                    .ToList();
+                    .ToArray();
             }
         }
 

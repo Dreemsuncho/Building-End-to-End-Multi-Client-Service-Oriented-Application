@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "My Account";
-    ViewBag.Name = "Account";
+    ViewBag.Name = "Login";
 
 }
 @section scripts {
@@ -16,12 +16,12 @@
 <h2>My Account</h2>
 
 <div id="my-account">
+    <br />
     @Html.Partial("~/Views/Shared/_ValidationErrors.cshtml")
 
     <div data-bind="visible: viewMode() == 'account', template: { name: 'account-template' }"></div>
     <div data-bind="visible: viewMode() == 'success', template: { name: 'success-template' }"></div>
 </div>
-
 
 <script type="text/html" id="account-template">
     <div data-bind="with: myAccountModel">

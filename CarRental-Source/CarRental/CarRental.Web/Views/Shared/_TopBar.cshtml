@@ -1,4 +1,4 @@
-﻿<div class="navbar navbar-fixed-top">
+﻿<div class="navbar navbar-default">
     <div class="navbar-inner">
         <div class="container">
             <ul class="nav nav-pills pull-right">
@@ -29,7 +29,7 @@
                 </li>
                 @if (Request.IsAuthenticated)
                 {
-                    <li class="@if (ViewBag.Name == "CustomerActions"){<text>active</text>}">
+                    <li class="dropdown @if (ViewBag.Name == "CustomerActions"){<text>active</text>}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Customer Actions <b class="caret"></b></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a href="@Url.Action("ReserveCar", "Customer")">Reserve a Car</a></li>

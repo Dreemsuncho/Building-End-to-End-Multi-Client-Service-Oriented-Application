@@ -16,6 +16,8 @@
 <h2>Make a reservation</h2>
 
 <div id="reserve">
+    <br />
+
     <div data-bind="visible: viewMode() == 'reserve', template: { name: 'reserve-template' }"></div>
     <div data-bind="visible: viewMode() == 'carlist', template: { name: 'carlist-template' }"></div>
     <div data-bind="visible: viewMode() == 'success', template: { name: 'success-template' }"></div>
@@ -58,7 +60,7 @@
                     <td data-bind="text: Year" />
                     <td data-bind="text: Description" />
                     <td data-bind="text: Color" />
-                    <td data-bind="text: RentalPrice" />
+                    <td data-bind="text:  '$ '+ RentalPrice" />
                 </tr>
             </tbody>
         </table>

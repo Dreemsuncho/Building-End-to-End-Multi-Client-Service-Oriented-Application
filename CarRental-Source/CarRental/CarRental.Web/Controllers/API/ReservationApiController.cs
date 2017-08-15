@@ -110,5 +110,20 @@ namespace CarRental.Web.Controllers
                 return response;
             });
         }
+
+        [HttpGet]
+        [Route("history")]
+        public HttpResponseMessage GetReservationHistory(HttpRequestMessage request)
+        {
+            HttpResponseMessage response = null;
+
+            string user = base.User.Identity.Name;
+
+            Rental[] rentalHistory = this._rentalService.GetRentalHistory(user);
+
+            response = request.CreateResponse(HttpStatusCode.OK, rentalHistory);
+
+            return response;
+        }
     }
 }
