@@ -172,8 +172,8 @@ namespace CarRental.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Reservation GetReservation(int reservationId)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -193,8 +193,8 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Reservation MakeReservation(string loginEmail, int carId, DateTime rentalDate, DateTime returnDate)
         {
             return base.ExecuteFaultHandledOperation(() =>
@@ -268,8 +268,8 @@ namespace CarRental.Business.Managers
         }
 
         [OperationBehavior(TransactionScopeRequired = true)]
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public void CancelReservation(int reservationId)
         {
             base.ExecuteFaultHandledOperation(() =>
@@ -313,8 +313,8 @@ namespace CarRental.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public CustomerReservationData[] GetCustomerReservations(string loginEmail)
         {
             return base.ExecuteFaultHandledOperation(() =>

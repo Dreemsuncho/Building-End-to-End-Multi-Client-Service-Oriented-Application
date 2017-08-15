@@ -20,6 +20,11 @@
 }(window.CarRental));
 
 (function (cr) {
+	let datePattern = /^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/[0-9]{4}$/;
+	cr.datePattern = datePattern;
+}(window.CarRental));
+
+(function (cr) {
 	let viewModelHelper = function () {
 		let self = this;
 
@@ -46,7 +51,7 @@
 						? always()
 						: self.isLoading(false);
 				});
-		}
+		};
 
 		self.apiPost = function (url, data, success, failure, always) {
 			self.isLoading(true);
@@ -96,7 +101,8 @@
 		}
 	};
 	cr.viewModelHelper = viewModelHelper;
-}(window.CarRental))
+}(window.CarRental));
+
 
 ko.bindingHandlers.datepicker = {
 	init: function (element, valueAccessor, allBindingsAccessor) {
@@ -131,14 +137,13 @@ ko.bindingHandlers.datepicker = {
 			}
 		}
 	}
-}
+};
 
 ko.bindingHandlers.loadingWhen = {
 	// any ViewModel using this extension needs a property called isLoading
 	// the div tag to contain the loaded content uses a data-bind="loadingWhen: isLoading"
 	init: function (element) {
-		var
-			$element = $(element),
+		var $element = $(element),
 			currentPosition = $element.css("position")
 		$loader = $("<div>").addClass("loading-loader").hide();
 
@@ -212,5 +217,20 @@ ko.bindingHandlers.date = {
 		element.innerHTML = ret;
 	},
 	update: function (element, valueAccessor, allBindingsAccessor, viewModel) {
+	}
+};
+
+// Here's a custom Knockout binding that makes elements shown/hidden via jQuery's fadeIn()/fadeOut() methods
+// Could be stored in a separate utility library
+ko.bindingHandlers.fadeVisible = {
+	init: function (element, valueAccessor) {
+		// Initially set the element to be instantly visible/hidden depending on the value
+		var value = valueAccessor();
+		$(element).toggle(ko.unwrap(value)); // Use "unwrapObservable" so we can handle values that may or may not be observable
+	},
+	update: function (element, valueAccessor) {
+		// Whenever the value subsequently changes, slowly fade the element in or out
+		var value = valueAccessor();
+		ko.unwrap(value) ? $(element).fadeIn(500) : $(element).fadeOut(0);
 	}
 };

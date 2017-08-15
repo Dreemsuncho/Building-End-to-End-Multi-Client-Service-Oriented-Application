@@ -1,5 +1,6 @@
 ﻿(function (cr) {
 	let AccountChangePasswordViewModel = function (loginEmail) {
+
 		let self = this;
 
 		self.viewModelHelper = new CarRental.viewModelHelper();
@@ -8,7 +9,7 @@
 
 		self.changePassword = function (model) {
 			let errors = ko.validation.group(model);
-			let isValid = errors().length == 0;
+			let isValid = errors().length === 0;
 			self.viewModelHelper.modelIsValid(isValid);
 
 			if (isValid) {
@@ -23,7 +24,7 @@
 			else {
 				self.viewModelHelper.modelErrors(errors());
 			}
-		}
+		};
 	};
 	cr.AccountChangePasswordViewModel = AccountChangePasswordViewModel;
-}(window.CarRental))
+}(window.CarRental));

@@ -20,11 +20,11 @@ namespace CarRental.Web
         {
             AreaRegistration.RegisterAllAreas();
 
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             BootstrapBundleConfig.RegisterBundles();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
 
             AggregateCatalog catalog = new AggregateCatalog();
             catalog.Catalogs.Add(new AssemblyCatalog(Assembly.GetExecutingAssembly()));
@@ -33,7 +33,7 @@ namespace CarRental.Web
             // view controllers
             DependencyResolver.SetResolver(new MefDependencyResolver(container));
             // web api controllers
-            GlobalConfiguration.Configuration.DependencyResolver = new MefAPIDependencyResolver(container); 
+            GlobalConfiguration.Configuration.DependencyResolver = new MefAPIDependencyResolver(container);
         }
     }
 }

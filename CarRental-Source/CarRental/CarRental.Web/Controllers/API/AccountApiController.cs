@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Net.Http;
 using System.ComponentModel.Composition;
 using System.Text.RegularExpressions;
 
-using AttributeRouting.Web.Http;
 
 using CarRental.Web.Core;
 using CarRental.Web.Models;
@@ -16,6 +15,7 @@ namespace CarRental.Web.Controllers
 {
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
+    [RoutePrefix("api/account")]
     public class AccountApiController : ApiControllerBase
     {
         private readonly ISecurityAdapter _securityAdapter;
@@ -27,7 +27,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpPost]
-        [HttpRoute("api/account/login")]
+        [Route("login")]
         public HttpResponseMessage Login(HttpRequestMessage request, [FromBody]AccountLoginModel model)
         {
             return base.GetHttpResponse(request, () =>
@@ -47,7 +47,7 @@ namespace CarRental.Web.Controllers
 
 
         [HttpPost]
-        [HttpRoute("api/account/register/step1")]
+        [Route("register/step1")]
         public HttpResponseMessage RegisterStep1(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
         {
             return base.GetHttpResponse(request, () =>
@@ -75,7 +75,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpPost]
-        [HttpRoute("api/account/register/step2")]
+        [Route("register/step2")]
         public HttpResponseMessage RegisterStep2(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
         {
             return base.GetHttpResponse(request, () =>
@@ -94,7 +94,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpPost]
-        [HttpRoute("api/account/register/step3")]
+        [Route("register/step3")]
         public HttpResponseMessage RegisterStep3(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
         {
             return base.GetHttpResponse(request, () =>
@@ -106,7 +106,8 @@ namespace CarRental.Web.Controllers
                 if (model.CreditCard.Length != 16)
                     errors.Add("Credit card number is in an invalid format.");
 
-                var matchExpDate = Regex.Match(model.ExpDate, @"(0[1-9]|1[0-2])\/[0-9]{2}", RegexOptions.IgnoreCase);
+                var datePattern = @"^(0[1-9]|1[0-2])\/(0[1-9]|1[0-9]|2[0-9]|3[0-1])\/[0-9]{4}$";
+                var matchExpDate = Regex.Match(model.ExpDate, datePattern, RegexOptions.IgnoreCase);
                 if (!matchExpDate.Success)
                     errors.Add("Expiration date is invalid.");
 
@@ -120,7 +121,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpPost]
-        [HttpRoute("api/account/register")]
+        [Route("register")]
         public HttpResponseMessage CreateAccount(HttpRequestMessage request, [FromBody]AccountRegisterModel model)
         {
             return base.GetHttpResponse(request, () =>
@@ -141,7 +142,7 @@ namespace CarRental.Web.Controllers
                             State = model.State,
                             ZipCode = model.ZipCode,
                             CreditCard = model.CreditCard,
-                            ExpDate = model.ExpDate.Substring(0, 2) + model.ExpDate.Substring(3, 2)
+                            ExpDate = model.ExpDate.Replace("/", "")
                         });
 
                     this._securityAdapter.Login(model.LoginEmail, model.Password, false);
@@ -154,7 +155,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpPost]
-        [HttpRoute("api/account/changepw")]
+        [Route("changepw")]
         public HttpResponseMessage ChangePassword(HttpRequestMessage request, [FromBody]AccountChangePasswordModel model)
         {
             return base.GetHttpResponse(request, () =>

@@ -13,7 +13,7 @@
 @section ko_apply{
 
     let viewModel = new CarRental.AccountRegisterViewModel();
-    ko.applyBindingsWithValidation(viewModel, $("#registration")[0], { insertMessages: false, messagesOnModified: false, grouping: { deep: true }});
+    ko.applyBindingsWithValidation(viewModel, $('#registration')[0], { insertMessages: false, messagesOnModified: false, grouping: { deep: true }});
 }
 
 <div id="registration">
@@ -93,7 +93,7 @@
         <br />
         <div class="input-prepend">
             <span class="add-on" style="width: 140px; text-align: left;">Exp. date:</span>
-            <input type="text" data-bind="value: ExpDate" style="width: 250px;" placeholder="MM/YY" />
+            <input type="text" data-bind="datepicker: ExpDate" style="width: 250px;" placeholder="MM/YY" />
         </div>
         <hr style="width: 415px; text-align: left;" />
         <div data-bind="loadingWhen: $parent.viewModelHelper.isLoading">

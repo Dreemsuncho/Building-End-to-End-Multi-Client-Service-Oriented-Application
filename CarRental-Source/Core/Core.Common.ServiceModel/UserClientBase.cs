@@ -10,15 +10,32 @@ namespace Core.Common.ServiceModel
 {
     public class UserClientBase<T> : ClientBase<T> where T : class
     {
-        public UserClientBase()
+        protected void InvokeSecurityWrappedMethod(Action func)
         {
             string userName = Thread.CurrentPrincipal.Identity.Name;
-            var header = new MessageHeader<string>(userName);
 
-            var operationContext = new OperationContextScope(InnerChannel);
+            using (new OperationContextScope(InnerChannel))
+            {
+                var header = new MessageHeader<string>(userName);
 
-            OperationContext.Current
-                .OutgoingMessageHeaders.Add(header.GetUntypedHeader("String", "System"));
+                OperationContext.Current.OutgoingMessageHeaders.Add(header.GetUntypedHeader("String", "System"));
+
+                func.Invoke();
+            }
+        }
+
+        protected Ty InvokeSecurityWrappedMethod<Ty>(Func<Ty> func)
+        {
+            string userName = Thread.CurrentPrincipal.Identity.Name;
+
+            using (new OperationContextScope(InnerChannel))
+            {
+                var header = new MessageHeader<string>(userName);
+
+                OperationContext.Current.OutgoingMessageHeaders.Add(header.GetUntypedHeader("String", "System"));
+
+                return func.Invoke();
+            }
         }
     }
 }

@@ -27,17 +27,17 @@ namespace CarRental.Business.Managers
             {
                 this.loginName = context.IncomingMessageHeaders.GetHeader<string>("String", "System");
                 // because maybe it's desktop user
-                if (this.loginName.IndexOf(@"\") > 1)
+                if (this.loginName.IndexOf(@"\") > -1)
                     this.loginName = string.Empty;
             }
+
+            ObjectBase.Container?.SatisfyImportsOnce(this);
 
             if (!string.IsNullOrWhiteSpace(this.loginName))
             {
                 this.authorizationAccount =
                     this.LoadAuthorizationValidationAccount(this.loginName);
             }
-
-            ObjectBase.Container?.SatisfyImportsOnce(this);
         }
 
         protected virtual Account LoadAuthorizationValidationAccount(string loginName)

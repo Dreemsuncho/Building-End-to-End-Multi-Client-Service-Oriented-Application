@@ -18,29 +18,29 @@ namespace CarRental.Client.Proxies
     {
         public void DeleteCar(int carId)
         {
-            base.Channel.DeleteCar(carId);
+            base.InvokeSecurityWrappedMethod(() => base.Channel.DeleteCar(carId));
         }
 
         public Car[] GetAllCars()
         {
-            return base.Channel.GetAllCars();
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.GetAllCars());
         }
 
         public Car[] GetAvailableCars(DateTime pickupDate, DateTime returnDate)
         {
-            return base.Channel.GetAvailableCars(pickupDate, returnDate);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.GetAvailableCars(pickupDate, returnDate));
         }
 
         public Car GetCar(int carId)
         {
-            return base.Channel.GetCar(carId);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.GetCar(carId));
         }
-       
+
         public Car UpdateCar(Car car)
         {
-            return base.Channel.UpdateCar(car);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.UpdateCar(car));
         }
-        
+
 
         #region Async
 

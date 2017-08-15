@@ -114,8 +114,8 @@ namespace CarRental.Business.Managers
             });
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
-        [PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
+        //[PrincipalPermission(SecurityAction.Demand, Role = Security.Car_Rental_Admin_Role)]
+        //[PrincipalPermission(SecurityAction.Demand, Name = Security.Car_Rental_User)]
         public Car[] GetAvailableCars(DateTime pickupDate, DateTime returnDate)
         {
             return base.ExecuteFaultHandledOperation(() =>

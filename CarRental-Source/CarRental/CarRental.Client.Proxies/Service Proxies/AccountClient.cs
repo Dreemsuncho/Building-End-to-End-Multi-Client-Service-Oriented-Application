@@ -18,12 +18,12 @@ namespace CarRental.Client.Proxies
     {
         public Account GetCustomerAccountInfo(string loginEmail)
         {
-            return base.Channel.GetCustomerAccountInfo(loginEmail);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.GetCustomerAccountInfo(loginEmail));
         }
 
         public void UpdateCustomerAccountInfo(Account account)
         {
-            base.Channel.UpdateCustomerAccountInfo(account);
+            base.InvokeSecurityWrappedMethod(() => base.Channel.UpdateCustomerAccountInfo(account));
         }
 
 

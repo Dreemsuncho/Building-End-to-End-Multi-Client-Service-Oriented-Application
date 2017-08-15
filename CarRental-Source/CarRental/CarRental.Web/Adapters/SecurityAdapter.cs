@@ -16,7 +16,7 @@ namespace CarRental.Web.Services
         {
             if (!WebSecurity.Initialized)
             {
-                WebSecurity.InitializeDatabaseConnection("CarRental", "Account", "AccountId", "LoginEmail", autoCreateTables: true);
+                WebSecurity.InitializeDatabaseConnection("main", "Account", "AccountId", "LoginEmail", autoCreateTables: true);
             }
         }
 

@@ -4,6 +4,7 @@
 
 (function (cr) {
 	let Step1 = function () {
+
 		let self = this;
 
 		self.FirstName = ko.observable("").extend({
@@ -30,6 +31,7 @@
 
 (function (cr) {
 	let Step2 = function () {
+
 		let self = this;
 
 		self.LoginEmail = ko.observable("").extend({
@@ -49,13 +51,15 @@
 
 (function (cr) {
 	let Step3 = function () {
+
 		let self = this;
 
 		self.CreditCard = ko.observable("").extend({
 			required: { message: "Credit card number is required" }
 		});
 		self.ExpDate = ko.observable("").extend({
-			required: { message: "Expiration date is required" }
+			required: { message: 'Expiration date is required' },
+			pattern: { message: 'Expiration date is an invalid format (must be MM/DD/YY)', params: CarRental.datePattern }
 		});
 	};
 	cr.AccountRegisterModel.Step3 = Step3;

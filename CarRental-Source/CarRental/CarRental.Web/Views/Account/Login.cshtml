@@ -11,7 +11,7 @@
     let returnUrl = '@Model.ReturnUrl'
 
     var viewModel = new CarRental.AccountLoginViewModel(returnUrl);
-    ko.applyBindingsWithValidation(viewModel, $("#login")[0], { insertMessages: false, messagesOnModified: false, grouping: { deep: true }});
+    ko.applyBindingsWithValidation(viewModel, $('#login')[0], { insertMessages: false, messagesOnModified: false, grouping: { deep: true }});
 }
 
 <div id="login">

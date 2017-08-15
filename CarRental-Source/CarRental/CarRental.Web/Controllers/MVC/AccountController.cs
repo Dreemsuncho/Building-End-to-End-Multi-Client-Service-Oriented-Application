@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.ComponentModel.Composition;
 
-using AttributeRouting.Web.Mvc;
 using WebMatrix.WebData;
 
 using CarRental.Web.Core;
@@ -15,6 +14,7 @@ namespace CarRental.Web.Controllers
 {
     [Export]
     [PartCreationPolicy(CreationPolicy.NonShared)]
+    [RoutePrefix("account")]
     public class AccountController : ViewControllerBase
     {
         private readonly ISecurityAdapter _securityAdapter;
@@ -26,7 +26,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpGet]
-        [GET("account/register")]
+        [Route("register")]
         public ActionResult Register()
         {
             this._securityAdapter.Initialize();
@@ -34,7 +34,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpGet]
-        [GET("account/login")]
+        [Route("login")]
         public ActionResult Login(string returnUrl)
         {
             this._securityAdapter.Initialize();
@@ -42,7 +42,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpGet]
-        [GET("account/logout")]
+        [Route("logout")]
         public ActionResult Logout()
         {
             this._securityAdapter.Initialize();
@@ -51,7 +51,7 @@ namespace CarRental.Web.Controllers
         }
 
         [HttpGet]
-        [GET("account/changepassword")]
+        [Route("changepassword")]
         [Authorize]
         public ActionResult ChangePassword()
         {

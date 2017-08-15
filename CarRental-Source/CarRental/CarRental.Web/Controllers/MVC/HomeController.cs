@@ -13,6 +13,7 @@ namespace CarRental.Web.Controllers
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class HomeController : ViewControllerBase
     {
+        [HttpGet]
         public ActionResult Index()
         {
             return base.View();

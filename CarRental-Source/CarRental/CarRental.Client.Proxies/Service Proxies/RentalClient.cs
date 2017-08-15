@@ -38,12 +38,12 @@ namespace CarRental.Client.Proxies
 
         public Reservation GetReservation(int reservationId)
         {
-            return base.Channel.GetReservation(reservationId);
+            return base.InvokeSecurityWrappedMethod(()=> base.Channel.GetReservation(reservationId));
         }
 
         public Reservation MakeReservation(string loginEmail, int carId, DateTime rentalDate, DateTime returnDate)
         {
-            return base.Channel.MakeReservation(loginEmail, carId, rentalDate, returnDate);
+            return base.InvokeSecurityWrappedMethod(() => base.Channel.MakeReservation(loginEmail, carId, rentalDate, returnDate));
         }
 
         public void ExecuteRentalFromReservation(int reservationId)
@@ -53,7 +53,7 @@ namespace CarRental.Client.Proxies
 
         public void CancelReservation(int reservationId)
         {
-            base.Channel.CancelReservation(reservationId);
+            base.InvokeSecurityWrappedMethod(()=>base.Channel.CancelReservation(reservationId));
         }
 
         public CustomerReservationData[] GetCurrentReservations()
@@ -63,7 +63,7 @@ namespace CarRental.Client.Proxies
 
         public CustomerReservationData[] GetCustomerReservations(string loginEmail)
         {
-            return base.Channel.GetCustomerReservations(loginEmail);
+            return base.InvokeSecurityWrappedMethod(()=> base.Channel.GetCustomerReservations(loginEmail));
         }
 
         public Rental GetRental(int rentalId)
