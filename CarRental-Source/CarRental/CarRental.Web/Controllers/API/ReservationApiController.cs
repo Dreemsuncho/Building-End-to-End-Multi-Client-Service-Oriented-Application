@@ -115,15 +115,18 @@ namespace CarRental.Web.Controllers
         [Route("history")]
         public HttpResponseMessage GetReservationHistory(HttpRequestMessage request)
         {
-            HttpResponseMessage response = null;
+            return base.GetHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
 
-            string user = base.User.Identity.Name;
+                string user = base.User.Identity.Name;
 
-            Rental[] rentalHistory = this._rentalService.GetRentalHistory(user);
+                Rental[] rentalHistory = this._rentalService.GetRentalHistory(user);
 
-            response = request.CreateResponse(HttpStatusCode.OK, rentalHistory);
+                response = request.CreateResponse(HttpStatusCode.OK, rentalHistory);
 
-            return response;
+                return response;
+            });
         }
     }
 }

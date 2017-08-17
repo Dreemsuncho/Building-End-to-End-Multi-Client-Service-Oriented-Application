@@ -12,7 +12,7 @@ using CarRental.Business.Bootstrapper;
 namespace CarRental.Data.Tests
 {
     [TestFixture]
-    public class DataLayerIntegrationTests
+    public class DataLayerIntegration_Tests
     {
         [SetUp]
         public void Initialize()

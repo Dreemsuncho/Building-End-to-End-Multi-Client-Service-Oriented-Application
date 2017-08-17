@@ -6,7 +6,7 @@ using CarRental.Business.Contracts;
 namespace CarRental.ServiceHost.Tests
 {
     [TestFixture]
-    public class ServiceAccessTests
+    public class ServiceAccess_Tests
     {
         [Test]
         public void test_inventory_manager_as_service()

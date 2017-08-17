@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace CarRental.Client.Proxies.Tests
 {
     [TestFixture]
-    public class ServiceAccessTests
+    public class ServiceAccess_Tests
     {
         [Test]
         public void test_inventory_client_connection()

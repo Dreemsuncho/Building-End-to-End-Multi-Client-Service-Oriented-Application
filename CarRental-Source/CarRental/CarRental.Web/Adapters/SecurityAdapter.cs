@@ -20,6 +20,11 @@ namespace CarRental.Web.Services
             }
         }
 
+        public void Logout()
+        {
+            WebSecurity.Logout();
+        }
+
         public void Register(string loginEmail, string password, object propertyValues)
         {
             WebSecurity.CreateUserAndAccount(loginEmail, password, propertyValues);

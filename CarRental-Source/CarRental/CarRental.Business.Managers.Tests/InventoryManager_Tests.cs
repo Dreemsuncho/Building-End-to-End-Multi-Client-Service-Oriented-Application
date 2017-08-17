@@ -17,7 +17,7 @@ using CarRental.Common;
 namespace CarRental.Business.Managers.Tests
 {
     [TestFixture]
-    public class InventoryManagerTests
+    public class InventoryManager_Tests
     {
         [SetUp]
         public void Initialize()

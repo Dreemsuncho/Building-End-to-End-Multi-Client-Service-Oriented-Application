@@ -10,7 +10,7 @@ using CarRental.Business.Entities;
 namespace CarRental.Data.Tests
 {
     [TestFixture]
-    public class DataLayerUnitTests
+    public class DataLayerUnit_Tests
     {
         [Test]
         public void test_repository_mocking()

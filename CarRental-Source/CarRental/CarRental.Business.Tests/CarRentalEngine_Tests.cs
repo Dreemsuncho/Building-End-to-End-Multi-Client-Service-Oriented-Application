@@ -14,7 +14,7 @@ using CarRental.Data.Contracts;
 namespace CarRental.Business.Tests
 {
     [TestFixture]
-    public class CarRentalEngineTests
+    public class CarRentalEngine_Tests
     {
         [Test]
         public void IsCarCurrentlyRented_any_account()

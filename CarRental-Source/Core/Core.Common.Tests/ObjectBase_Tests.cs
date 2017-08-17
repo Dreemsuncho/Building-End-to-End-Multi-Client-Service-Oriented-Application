@@ -9,7 +9,7 @@ using Core.Common.Contracts;
 namespace Core.Common.Tests
 {
     [TestFixture]
-    public class ObjectBaseTests
+    public class ObjectBase_Tests
     {
         [Test]
         public void test_clean_property_change()

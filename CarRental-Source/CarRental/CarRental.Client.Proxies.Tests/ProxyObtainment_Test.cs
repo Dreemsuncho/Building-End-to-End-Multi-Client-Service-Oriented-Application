@@ -13,7 +13,7 @@ using Core.Common.Contracts;
 namespace CarRental.Client.Proxies.Tests
 {
     [TestFixture]
-    public class ProxyObtainmentTest
+    public class ProxyObtainment_Test
     {
         [SetUp]
         public void Initialize()
